@@ -87,7 +87,7 @@ public class RecaptchaServlet extends SlingAllMethodsServlet {
             }
 
         } catch (Exception e) {
-            LOGGER.error("Recapexception----------v1" + e.getMessage());
+            LOGGER.error("Recaptchaexception----------v1" + e.getMessage());
         }
         return response;
     }
