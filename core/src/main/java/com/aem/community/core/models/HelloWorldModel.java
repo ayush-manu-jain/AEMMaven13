@@ -8,7 +8,10 @@ import com.aem.community.core.MySimpleService;
 
 @Model(adaptables=Resource.class)
 public class HelloWorldModel {
-
+	
+	private String abc;
+	private String efg;
+	
 	@OSGiService
 	MySimpleService mySimpleService;
     
