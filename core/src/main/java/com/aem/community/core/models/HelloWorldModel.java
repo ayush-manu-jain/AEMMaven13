@@ -11,6 +11,9 @@ public class HelloWorldModel {
 
 	private String xyz;
 	
+	private String abc;
+	private String efg;
+	
 	@OSGiService
 	MySimpleService mySimpleService;
     
