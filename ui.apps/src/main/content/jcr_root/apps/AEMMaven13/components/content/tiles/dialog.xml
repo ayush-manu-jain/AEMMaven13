@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    title="Tiles"
+    xtype="dialog">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <tabs jcr:primaryType="cq:TabPanel">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <container
+                    jcr:primaryType="nt:unstructured"
+                    title="Tiles Metadata"
+                    xtype="panel">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <layout
+                            jcr:primaryType="cq:Widget"
+                            defaultValue="tile"
+                            fieldLabel="Layout"
+                            name="./layout"
+                            type="select"
+                            width="300"
+                            xtype="selection">
+                            <options jcr:primaryType="cq:WidgetCollection">
+                                <tile
+                                    jcr:primaryType="nt:unstructured"
+                                    text="Tiles"
+                                    value="tile"/>
+                                <card
+                                    jcr:primaryType="nt:unstructured"
+                                    text="Cards"
+                                    value="card"/>
+                            </options>
+                        </layout>
+                        <columns
+                            jcr:primaryType="cq:Widget"
+                            defaultValue="halves"
+                            fieldDescription="Select the column view required, two column or three column."
+                            fieldLabel="Columns"
+                            name="./layoutClass"
+                            type="select"
+                            width="300"
+                            xtype="selection">
+                            <options jcr:primaryType="cq:WidgetCollection">
+                                <halves
+                                    jcr:primaryType="nt:unstructured"
+                                    text="Two Columns"
+                                    value="halves"/>
+                                <thirds
+                                    jcr:primaryType="nt:unstructured"
+                                    text="Three Columns"
+                                    value="thirds"/>
+                            </options>
+                        </columns>
+                        <tiles
+                            jcr:primaryType="cq:Widget"
+                            autoPopulate="{Boolean}true"
+                            fieldLabel="Tiles/Cards"
+                            minItems="1"
+                            name="./tilesList"
+                            prefix="tile-"
+                            xtype="multifield">
+                            <fieldConfig
+                                jcr:primaryType="nt:unstructured"
+                                allowBlank="{Boolean}false"
+                                cls="x-item-disabled"
+                                xtype="textfield"/>
+                        </tiles>
+                    </items>
+                </container>
+                <layout
+                    jcr:primaryType="cq:Panel"
+                    path="/apps/racv/components/layout/parent/tab_parent.infinity.json"
+                    xtype="cqinclude"/>
+            </items>
+        </tabs>
+    </items>
+</jcr:root>

@@ -1,14 +1,13 @@
 package com.aem.community.core;
  
-import org.apache.sling.settings.SlingSettingsService;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.osgi.service.component.annotations.ConfigurationPolicy;
-import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.metatype.annotations.Designate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
  
  
-@Component(service = MySimpleService.class,configurationPolicy=ConfigurationPolicy.REQUIRE)
+@Component(service = MySimpleService.class, immediate = true)
 @Designate(ocd = MyServiceConfiguration.class)
 public class MySimpleServiceImpl implements MySimpleService {
      
@@ -17,13 +16,29 @@ public class MySimpleServiceImpl implements MySimpleService {
  
     private MyServiceConfiguration config;
      
+    private static final Logger log = LoggerFactory.getLogger(MySimpleServiceImpl.class);
+    
     @Activate
     public void activate(MyServiceConfiguration config) {
+    	log.error("inside config ########### " +config);
         this.config = config;
     }
  
-    public String getSimpleValue() {
-        return config.configValue();
+    public boolean getCheckBoxValue() {
+       return config.checkBoxValue(); 
     }
+    
+    public String getName() {
+    	return config.name();
+    }
+
+	public String[] getEmail() {
+		return config.email();
+	}
+
+	@Override
+	public String getTime() {
+		return config.time();
+	}
 }
  

@@ -1,0 +1,18 @@
+<!--/*
+  tile.html
+
+  Author: vbharg
+
+  << Copyright text >>
+  ==============================================================================
+
+  Tile
+
+  ==============================================================================
+*/-->
+<sly data-sly-use.tile="au.com.racv.viewhelpers.tiles.TileViewHelper" 
+	 data-sly-use.defaultTile="default.html"
+	 data-sly-use.ctaTile="cta.html">
+	 <sly data-sly-test="${tile.type=='default'}" data-sly-call="${defaultTile.render  @tile=tile}" />
+	 <sly data-sly-test="${tile.type=='cta'}" data-sly-call="${ctaTile.render  @tile=tile}" />
+ </sly>

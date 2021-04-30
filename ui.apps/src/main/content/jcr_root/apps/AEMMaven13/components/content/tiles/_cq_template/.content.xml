@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="nt:unstructured"
+    bottomSpacingDesktop="u-spacing-bottom-small"
+    bottomSpacingMobile="none"
+    layout="tile"
+    layoutClass="halves"
+    renderAsContainer="{Boolean}true"
+    tilesList="[tile-1,tile-2]"
+    topSpacingDesktop="u-spacing-top-small"
+    topSpacingMobile="none">
+    <tile-1
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="racv/components/generic/tiles/tile"
+        heading="Heading"
+        layoutType="default"/>
+    <tile-2
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="racv/components/generic/tiles/tile"
+        heading="Heading"
+        layoutType="default"/>
+</jcr:root>

@@ -1,0 +1,41 @@
+<!--/*
+  card.html
+
+  Author: vbharg
+
+  << Copyright text >>
+  ==============================================================================
+
+  Tile's Card Layout
+
+  ==============================================================================
+*/-->
+<article data-sly-use.card="au.com.racv.viewhelpers.tiles.CardViewHelper" class="${card.cssClass} c-card--simple@xsmall  js-match-height">
+	<figure data-sly-test="${card.image}" class="c-card__img">
+		<sly data-sly-use.image="${'au.com.racv.viewhelpers.AdaptiveImageViewHelper' @ transformation='search' ,image=card.image}">
+            <picture class="picture">
+				<source srcset="${image.desktop}" media="(max-width: 540px)">
+				<source srcset="${image.tablet}" media="(max-width: 768px)">
+				<source srcset="${image.desktop}" media="(max-width: 992px)">
+				<source srcset="${image.desktop}">
+				<img src="${image.desktop}" alt="${image.altText}"/> 
+            </picture>
+         </sly>
+	</figure>
+	<div class="c-card__inner">
+		<sly data-sly-test="${properties.enableCta=='true' || properties.enableCta=='on' }">
+			<a href="${card.ctaLink}"> 
+				<h3 class="c-card__title">${card.heading}</h3>
+				<div class="c-card__content u-hide@medium" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div>
+			</a>
+		</sly>
+		<sly data-sly-test="${!properties.enableCta}">
+			<h3>${card.heading}</h3>
+			<div class="c-card__content u-hide@medium" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div>
+		</sly>	
+		<div class="c-card__content u-show@medium" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div>	
+		<footer class="c-card__footer">
+			<a data-sly-test="${properties.enableCta=='true' || properties.enableCta=='on'}" href="${card.ctaLink}" target="${card.mode}" class="c-btn c-btn--ghost">${card.ctaLabel}</a>
+		</footer>
+	</div>
+</article>
