@@ -1,0 +1,17 @@
+<!--/*
+  cta.html
+
+  Author: vbharg
+
+  << Copyright text >>
+  ==============================================================================
+
+  Tile's CTA Layout
+
+  ==============================================================================
+*/-->
+<template data-sly-template.render="${@tile}">
+	<a href="${tile.ctaLink}" target="${tile.mode}" class="c-tile c-tile--cta ${tile.cssClass} c-tile--simple@xsmall  js-match-height">
+        <h3 class="c-tile__title">${tile.heading ||'Heading'}</h3>
+    </a>
+</template>

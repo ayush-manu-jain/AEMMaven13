@@ -1,0 +1,19 @@
+<!--/*
+  tiles.html
+
+  Author: vbharg
+
+  << Copyright text >>
+  ==============================================================================
+
+  Tiles
+
+  ==============================================================================
+*/-->
+<ul data-sly-use.tiles="au.com.racv.viewhelpers.tiles.TilesViewHelper" 
+	class="o-box-layout  o-box-layout--${tiles.layoutClass}"
+	data-sly-list="${tiles.tiles}">
+	<li class="o-box-layout__item">
+       	<div data-sly-resource="${item @resourceType=tiles.layout}" data-sly-unwrap="${!wcmmode.edit}"></div>
+	</li>
+</ul>

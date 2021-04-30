@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    height="450"
+    title="Tile"
+    xtype="dialog">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <tabs jcr:primaryType="cq:TabPanel">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <tile
+                    jcr:primaryType="nt:unstructured"
+                    name="accordionpanel"
+                    title="Configurations"
+                    xtype="panel">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <tileLayoutOptions
+                            jcr:primaryType="cq:Widget"
+                            collapsed="{Boolean}false"
+                            collapsible="{Boolean}true"
+                            title="Layout"
+                            xtype="dialogfieldset">
+                            <items jcr:primaryType="cq:WidgetCollection">
+                                <layout
+                                    jcr:primaryType="cq:Widget"
+                                    defaultValue="default"
+                                    fieldLabel="Tile Layout"
+                                    name="./layoutType"
+                                    type="select"
+                                    width="300"
+                                    xtype="selection">
+                                    <options jcr:primaryType="cq:WidgetCollection">
+                                        <default
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Content Tile"
+                                            value="default"/>
+                                        <cta
+                                            jcr:primaryType="nt:unstructured"
+                                            text="CTA Tile"
+                                            value="cta"/>
+                                    </options>
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        selectionchanged="function(comp, val) {&#xa;    var dialog = comp.findParentByType('dialog');&#xa;    var showIconComp = dialog.find('name', './showIcon')[0];&#xa;    var iconClassComp = dialog.find('name', './iconClass')[0];&#xa;&#x9;var ctaContent = dialog.find('name', './ctaContent')[0];&#xa;    var ctaLabelComp = dialog.find('name', './ctaLabel')[0];&#xa;    var ctaLabelLinkComp = dialog.find('name', './ctaLink')[0];&#xa;&#x9;var ctaLabelURLParameter = dialog.find('name', './urlParameter')[0];&#xa;    var ctaLabelMode = dialog.find('name', './openingMode')[0];&#xa;&#x9;var ctaContent1 = dialog.find('name', './ctaContent1')[0];&#xa;&#x9;var ctaLabelComp1 = dialog.find('name', './ctaLabel1')[0];&#xa;    var ctaLabelLinkComp1 = dialog.find('name', './ctaLink1')[0];&#xa;&#x9;var ctaLabelURLParameter1 = dialog.find('name', './urlParameter1')[0];&#xa;    var ctaLabelMode1 = dialog.find('name', './openingMode1')[0];&#xa;    &#xa;&#x9;var enableCTA = dialog.find('name', './enableCta')[0];&#xa;    if (val === 'cta') {&#xa;&#x9;&#x9;ctaContent.show();&#x9;&#xa;&#x9;&#x9;ctaContent1.hide();&#x9;&#x9;&#xa;        showIconComp.hide();&#xa;        iconClassComp.hide();&#xa;&#x9;&#x9;ctaLabelLinkComp.show();&#xa;        ctaLabelComp.hide();&#xa;        ctaLabelURLParameter.hide();&#xa;&#x9;&#x9;ctaLabelMode.hide();&#xa;&#x9;&#x9;ctaLabelLinkComp1.hide();&#xa;        ctaLabelComp1.hide();&#xa;        ctaLabelURLParameter1.hide();&#xa;&#x9;&#x9;ctaLabelMode1.hide();&#xa;&#xa;&#x9;&#x9;enableCTA.hide();&#xa;    } else {&#xa;&#x9;&#x9;&#xa;&#x9;&#x9;ctaContent.hide();&#xa;&#x9;&#x9;ctaContent1.hide();  &#xa;&#x9;&#x9;ctaLabelLinkComp.hide();&#xa;        ctaLabelComp.hide();&#xa;        ctaLabelURLParameter.hide();&#xa;&#x9;&#x9;ctaLabelMode.hide();&#xa;&#x9;&#x9;ctaLabelLinkComp1.hide();&#xa;        ctaLabelComp1.hide();&#xa;        ctaLabelURLParameter1.hide();&#xa;&#x9;&#x9;ctaLabelMode1.hide();&#xa;&#x9;&#x9;showIconComp.show();&#xa;&#x9;&#x9; enableCTA.show();&#xa;        if (showIconComp.value) {&#xa;            iconClassComp.show();&#xa;        } else {&#xa;            iconClassComp.hide();&#xa;        }&#xa;&#x9;&#x9;if (enableCTA.value) {&#xa;          &#xa;&#x9;&#x9;&#x9;ctaContent.show();&#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp.show();&#xa;&#x9;&#x9;&#x9;ctaLabelComp.show();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter.show();&#xa;&#x9;&#x9;&#x9;ctaLabelMode.show();&#xa;&#x9;&#x9;&#x9;ctaContent1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelComp1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelMode1.show();&#xa;        &#xa;&#x9;&#x9;&#x9;&#xa;        } else {&#xa;&#x9;&#x9;&#x9;&#xa;            ctaContent.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp.show();&#xa;&#x9;&#x9;&#x9;ctaLabelComp.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelMode.hide();&#xa;&#x9;&#x9;&#x9;ctaContent1.hide(); &#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp1.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelComp1.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter1.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelMode1.hide();&#xa;        }&#xa;&#x9;&#x9;&#xa;      }&#xa;}"/>
+                                </layout>
+                                <tileSize
+                                    jcr:primaryType="cq:Widget"
+                                    defaultValue="c-tile--small"
+                                    fieldLabel="Tile Size"
+                                    hideMode="offsets"
+                                    name="./tileSize"
+                                    type="select"
+                                    width="300"
+                                    xtype="selection">
+                                    <options jcr:primaryType="cq:WidgetCollection">
+                                        <small
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Small Tile"
+                                            value="c-tile--small"/>
+                                        <medium
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Medium Tile"
+                                            value="c-tile--medium"/>
+                                        <large
+                                            jcr:primaryType="nt:unstructured"
+                                            text="Large Tile"
+                                            value="c-tile--large"/>
+                                    </options>
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        selectionchanged="function(comp, val) {            var dialog = comp.findParentByType('dialog');            var showIconComp = dialog.find('name','./showIcon')[0];            var iconClassComp = dialog.find('name', './iconClass')[0];            if(val==='c-tile--large') {             showIconComp.show(); if(showIconComp.value) {              iconClassComp.show();             } else {              iconClassComp.hide();             }  } else {   showIconComp.hide(); iconClassComp.hide();    }           }"/>
+                                </tileSize>
+                                <highlight
+                                    jcr:primaryType="cq:Widget"
+                                    fieldDescription="Highlight selected tile with blue color."
+                                    fieldLabel="Highlight"
+                                    name="./highlight"
+                                    type="checkbox"
+                                    xtype="selection"/>
+                                <starred
+                                    jcr:primaryType="cq:Widget"
+                                    defaultValue="{Boolean}true"
+                                    fieldDescription="Starred selected tile."
+                                    fieldLabel="Starred"
+                                    name="./starred"
+                                    type="checkbox"
+                                    xtype="selection"/>
+                                <enableCta
+                                    jcr:primaryType="cq:Widget"
+                                    fieldLabel="Enable CTA"
+                                    name="./enableCta"
+                                    type="checkbox"
+                                    xtype="selection">
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        selectionchanged="function(comp, val, isChecked) {&#xa;    var dialog = comp.findParentByType('dialog');&#xa;    if (isChecked) {&#xa;&#x9;&#x9;dialog.find('name', './ctaContent')[0].show();&#xa;&#x9;&#x9;dialog.find('name', './ctaContent1')[0].show();&#x9;&#x9;&#xa;    }&#xa;&#x9;else{&#xa;&#x9;&#x9;dialog.find('name', './ctaContent')[0].hide();&#xa;&#x9;&#x9;dialog.find('name', './ctaContent1')[0].hide();&#xa;&#x9;}&#xa;}"/>
+                                </enableCta>
+                            </items>
+                        </tileLayoutOptions>
+                        <tileContentOptions
+                            jcr:primaryType="cq:Widget"
+                            collapsed="{Boolean}false"
+                            collapsible="{Boolean}true"
+                            title="Tile Content"
+                            xtype="dialogfieldset">
+                            <items jcr:primaryType="cq:WidgetCollection">
+                                <heading
+                                    jcr:primaryType="cq:Widget"
+                                    allowBlank="true"
+                                    fieldLabel="Tile title"
+                                    name="./heading"
+                                    xtype="textfield"/>
+                                <cta
+                                    jcr:primaryType="cq:Widget"
+                                    collapsed="{Boolean}false"
+                                    collapsible="{Boolean}true"
+                                    name="./ctaContent"
+                                    title="CTA Content"
+                                    xtype="dialogfieldset">
+                                    <items jcr:primaryType="cq:WidgetCollection">
+                                        <ctaLink
+                                            jcr:primaryType="cq:Widget"
+                                            allowBlank="true"
+                                            fieldLabel="CTA Link"
+                                            hidden="{Boolean}true"
+                                            name="./ctaLink"
+                                            regex="/^(?!{).*$/"
+                                            rootPath="/content"
+                                            xtype="pathfield"/>
+                                        <ctaLabel
+                                            jcr:primaryType="cq:Widget"
+                                            fieldDescription="Keep empty to avoid CTA Button."
+                                            fieldLabel="CTA Label"
+                                            hidden="{Boolean}true"
+                                            name="./ctaLabel"
+                                            xtype="textfield"/>
+                                        <urlParameter
+                                            jcr:primaryType="cq:Widget"
+                                            fieldDescription="Enter Analytics URL Parameter value if required."
+                                            fieldLabel="Analytics URL Parameter"
+                                            name="./urlParameter"
+                                            xtype="textfield"/>
+                                        <modeofopeninglink
+                                            jcr:primaryType="cq:Widget"
+                                            defaultValue="_self"
+                                            fieldLabel="Open in"
+                                            name="./openingMode"
+                                            options="/etc/lists/racv/link-target/_jcr_content.list.json"
+                                            type="select"
+                                            width="300"
+                                            xtype="selection"/>
+                                    </items>
+                                </cta>
+                                <cta1
+                                    jcr:primaryType="cq:Widget"
+                                    collapsed="{Boolean}false"
+                                    collapsible="{Boolean}true"
+                                    name="./ctaContent1"
+                                    title="CTA Content 1"
+                                    xtype="dialogfieldset">
+                                    <items jcr:primaryType="cq:WidgetCollection">
+                                        <ctaLink1
+                                            jcr:primaryType="cq:Widget"
+                                            fieldLabel="CTA Link1"
+                                            hidden="{Boolean}true"
+                                            name="./ctaLink1"
+                                            regex="/^(?!{).*$/"
+                                            rootPath="/content"
+                                            xtype="pathfield"/>
+                                        <ctalabel1
+                                            jcr:primaryType="cq:Widget"
+                                            fieldDescription="Keep empty to avoid CTA Button."
+                                            fieldLabel="CTA Label1"
+                                            hidden="{Boolean}true"
+                                            name="./ctaLabel1"
+                                            xtype="textfield"/>
+                                        <urlParameter1
+                                            jcr:primaryType="cq:Widget"
+                                            fieldDescription="Enter Analytics URL Parameter value if required."
+                                            fieldLabel="Analytics URL Parameter1"
+                                            name="./urlParameter1"
+                                            xtype="textfield"/>
+                                        <modeofopeninglink1
+                                            jcr:primaryType="cq:Widget"
+                                            defaultValue="_self"
+                                            fieldLabel="Open in"
+                                            name="./openingMode1"
+                                            options="/etc/lists/racv/link-target/_jcr_content.list.json"
+                                            type="select"
+                                            width="300"
+                                            xtype="selection"/>
+                                    </items>
+                                </cta1>
+                                <showIcon
+                                    jcr:primaryType="cq:Widget"
+                                    fieldLabel="Show Icon"
+                                    name="./showIcon"
+                                    type="checkbox"
+                                    xtype="selection">
+                                    <listeners
+                                        jcr:primaryType="nt:unstructured"
+                                        selectionchanged="function(comp, val, isChecked) {            var dialog = comp.findParentByType('dialog');            if(isChecked) {             dialog.find('name', './iconClass')[0].show();            } else {             dialog.find('name', './iconClass')[0].hide();            }           }"/>
+                                </showIcon>
+                                <icon_class
+                                    jcr:primaryType="cq:Widget"
+                                    fieldLabel="Tile Icon"
+                                    hideMode="offsets"
+                                    name="./iconClass"
+                                    options="/etc/lists/racv/button-icons/_jcr_content.list.json"
+                                    type="select"
+                                    width="300"
+                                    xtype="selection"/>
+                            </items>
+                        </tileContentOptions>
+                    </items>
+                </tile>
+            </items>
+        </tabs>
+    </items>
+    <listeners
+        jcr:primaryType="nt:unstructured"
+        loadcontent="function(comp) {&#xa;&#x9;var showIconComp = comp.find('name', './showIcon')[0];&#xa;    var iconClassComp = comp.find('name', './iconClass')[0];&#xa;&#x9;var ctaContent = comp.find('name', './ctaContent')[0];&#xa;    var ctaLabelComp = comp.find('name', './ctaLabel')[0];&#xa;    var ctaLabelLinkComp = comp.find('name', './ctaLink')[0];&#xa;&#x9;var ctaLabelURLParameter = comp.find('name', './urlParameter')[0];&#xa;    var ctaLabelMode = comp.find('name', './openingMode')[0];&#xa;&#x9;var ctaContent1 = comp.find('name', './ctaContent1')[0];&#xa;&#x9;var ctaLabelComp1 = comp.find('name', './ctaLabel1')[0];&#xa;    var ctaLabelLinkComp1 = comp.find('name', './ctaLink1')[0];&#xa;&#x9;var ctaLabelURLParameter1 = comp.find('name', './urlParameter1')[0];&#xa;    var ctaLabelMode1 = comp.find('name', './openingMode1')[0];&#xa;&#x9;var layout = comp.find('name', './layoutType')[0].value;&#xa;    var tileSize = comp.find('name', './tileSize')[0].value;&#xa;    &#xa;&#x9;var enableCTA = comp.find('name', './enableCta')[0];&#xa;&#x9;&#xa;    if (layout === 'cta') {&#xa;&#x9;&#x9;ctaContent.show();&#x9;&#xa;&#x9;&#x9;ctaContent1.hide();&#x9;&#x9;&#xa;        showIconComp.hide();&#xa;        iconClassComp.hide();&#xa;&#x9;&#x9;ctaLabelLinkComp.show();&#xa;        ctaLabelComp.hide();&#xa;        ctaLabelURLParameter.hide();&#xa;&#x9;&#x9;ctaLabelMode.hide();&#xa;&#x9;&#x9;ctaLabelLinkComp1.hide();&#xa;        ctaLabelComp1.hide();&#xa;        ctaLabelURLParameter1.hide();&#xa;&#x9;&#x9;ctaLabelMode1.hide();&#xa;&#xa;&#x9;&#x9;enableCTA.hide();&#xa;    } else {&#xa;        ctaContent.hide();&#xa;&#x9;&#x9;ctaContent1.hide();  &#xa;&#x9;&#x9;ctaLabelLinkComp.hide();&#xa;        ctaLabelComp.hide();&#xa;        ctaLabelURLParameter.hide();&#xa;&#x9;&#x9;ctaLabelMode.hide();&#xa;&#x9;&#x9;ctaLabelLinkComp1.hide();&#xa;        ctaLabelComp1.hide();&#xa;        ctaLabelURLParameter1.hide();&#xa;&#x9;&#x9;ctaLabelMode1.hide();&#xa;&#x9;&#x9;showIconComp.show();&#xa;&#x9;&#x9; enableCTA.show();&#xa;        if (showIconComp.value) {&#xa;            iconClassComp.show();&#xa;        } else {&#xa;            iconClassComp.hide();&#xa;        }&#xa;&#x9;&#x9;if (enableCTA.value) {&#xa;          &#xa;&#x9;&#x9;&#x9;ctaContent.show();&#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp.show();&#xa;&#x9;&#x9;&#x9;ctaLabelComp.show();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter.show();&#xa;&#x9;&#x9;&#x9;ctaLabelMode.show();&#xa;&#x9;&#x9;&#x9;ctaContent1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelComp1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter1.show();&#xa;&#x9;&#x9;&#x9;ctaLabelMode1.show();&#xa;        &#xa;&#x9;&#x9;&#x9;&#xa;        } else {&#xa;&#x9;&#x9;&#x9;&#xa;            ctaContent.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp.show();&#xa;&#x9;&#x9;&#x9;ctaLabelComp.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelMode.hide();&#xa;&#x9;&#x9;&#x9;ctaContent1.hide(); &#xa;&#x9;&#x9;&#x9;ctaLabelLinkComp1.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelComp1.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelURLParameter1.hide();&#xa;&#x9;&#x9;&#x9;ctaLabelMode1.hide();&#xa;        }&#xa;    }   &#xa;&#x9;if (tileSize === 'c-tile--large') {&#xa;        showIconComp.show();&#xa;        if (showIconComp.value) {&#xa;            iconClassComp.show();&#xa;        } else {&#xa;            iconClassComp.hide();&#xa;        }&#xa;    } else {&#xa;        showIconComp.hide();&#xa;        iconClassComp.hide();&#xa;    }&#xa;}"/>
+</jcr:root>

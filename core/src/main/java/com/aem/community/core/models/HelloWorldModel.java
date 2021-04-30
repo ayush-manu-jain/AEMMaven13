@@ -1,46 +1,33 @@
 package com.aem.community.core.models;
  
-import java.util.Date;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import javax.inject.Named;
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.sling.api.resource.Resource;
-import org.apache.sling.models.annotations.Default;
 import org.apache.sling.models.annotations.Model;
-import org.apache.sling.models.annotations.injectorspecific.ValueMapValue;
-import org.apache.sling.settings.SlingSettingsService;
+import org.apache.sling.models.annotations.injectorspecific.OSGiService;
+
+import com.aem.community.core.MySimpleService;
 
 @Model(adaptables=Resource.class)
 public class HelloWorldModel {
 
-    @Inject
-    private SlingSettingsService settings;
-
-    @Inject @Named("sling:resourceType") @Default(values="No resourceType")
-    protected String resourceType;
+	private String xyz;
+	
+	private String abc;
+	private String efg;
+	
+	@OSGiService
+	MySimpleService mySimpleService;
     
-    @ValueMapValue
-    String link;
-    
-    private String message;
-
-    @PostConstruct
-    protected void init() {
-    	Date date = new Date();  
-        message = date.toString();
-        if (!StringUtils.startsWithIgnoreCase(link, "http")) {
-        	  link = link +".html";
-        	  }
-    }
-
-    public String getMessage() {
-        return message;
+    public String getName() {
+    	return mySimpleService.getName();
     }
     
-    public String getLink() {
-    	return link;
+    public String[] getEmail() {
+    	return mySimpleService.getEmail();
+    }
+    public boolean getCheckBoxValue() {
+    	return mySimpleService.getCheckBoxValue();
+    }
+    public String getTime() {
+    	return mySimpleService.getTime();
     }
 }

@@ -1,0 +1,141 @@
+<!--/*
+  default.html
+
+  Author: vbharg || mkaur5
+
+  << Copyright text >>
+  ==============================================================================
+
+  Tile's Default Layout
+
+  ==============================================================================
+*/-->
+<template data-sly-template.render="${@tile}">
+	<sly data-sly-test="${properties.enableCta=='true' && !properties.ctaLabel && properties.ctaLink}">
+		<a href="${tile.ctaLink}" class="c-tile ${tile.cssClass} js-match-height" target="${tile.mode}">
+			<sly data-sly-test="${tile.iconClass}">
+				<div class="c-tile__icon">
+					<i class="c-icon"> 
+					<span class="c-icon__inner"> 
+						<svg><use xlink:href="#${tile.iconClass}"></use></svg>
+					</span>
+					</i>
+				</div>
+			</sly>
+			<h3 class="c-tile__title">${properties.heading||'Heading'}</h3>
+
+			<div class="c-tile__content" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div><!-- c-tile__content -->
+			<sly data-sly-test="${properties.ctaLabel1}">
+				<span class="${properties.highlight?'c-btn  c-btn--secondary':'c-btn c-btn--ghost'}">${properties.ctaLabel1}</span>
+			</sly>
+		</a>
+	</sly>
+	
+	<sly data-sly-test="${properties.enableCta=='true' && !properties.ctaLabel1 && properties.ctaLink1}">
+		<a href="${tile.ctaLink1}" class="c-tile ${tile.cssClass} js-match-height" target="${tile.mode1}">
+			<sly data-sly-test="${tile.iconClass}">
+				<div class="c-tile__icon">
+					<i class="c-icon"> 
+					<span class="c-icon__inner"> 
+						<svg><use xlink:href="#${tile.iconClass}"></use></svg>
+					</span>
+					</i>
+				</div>
+			</sly>
+			<h3 class="c-tile__title">${properties.heading||'Heading'}</h3>
+
+			<div class="c-tile__content" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div><!-- c-tile__content -->
+			<sly data-sly-test="${properties.ctaLabel}">
+				<span class="${properties.highlight?'c-btn  c-btn--secondary':'c-btn c-btn--ghost'}">${properties.ctaLabel}</span>
+			</sly>
+		</a>
+	</sly>
+
+	<sly data-sly-test="${(!properties.enableCta) || (properties.enableCta=='true' && !properties.ctaLabel && !properties.ctaLink && !properties.ctaLabel1 && !properties.ctaLink1)}">
+		<article class="c-tile ${tile.cssClass} js-match-height">
+			<sly data-sly-test="${tile.iconClass}">
+				<div class="c-tile__icon">
+					<i class="c-icon"> 
+						<span class="c-icon__inner"> 
+							<svg><use xlink:href="#${tile.iconClass}"></use></svg>
+						</span>
+					</i>
+				</div>
+			</sly>
+
+			<h3 data-sly-test="${properties.heading||'Heading'}" class="c-tile__title">
+				${tile.heading}
+			</h3>
+			<div class="c-tile__content" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div>
+		</article>
+	</sly>
+
+
+	<sly data-sly-test="${properties.enableCta=='true' && properties.ctaLabel && !properties.ctaLabel1}">
+		<a href="${tile.ctaLink}" class="c-tile ${tile.cssClass} js-match-height" target="${tile.mode}">
+			<sly data-sly-test="${tile.iconClass}">
+				<div class="c-tile__icon">
+					<i class="c-icon"> 
+						<span class="c-icon__inner"> 
+							<svg><use xlink:href="#${tile.iconClass}"></use></svg>
+						</span>
+					</i>
+				</div>
+			</sly>
+			<h3 class="c-tile__title">${properties.heading||'Heading'}</h3>
+
+			<div class="c-tile__content" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div><!-- c-tile__content -->
+			<sly data-sly-test="${properties.ctaLabel}">
+				<span class="${properties.highlight?'c-btn  c-btn--secondary':'c-btn c-btn--ghost'}">${properties.ctaLabel}</span>
+			</sly>
+		</a>
+	</sly>
+	
+	<sly data-sly-test="${properties.enableCta=='true' && !properties.ctaLabel && properties.ctaLabel1}">
+		<a href="${tile.ctaLink1}" class="c-tile ${tile.cssClass} js-match-height" target="${tile.mode1}">
+			<sly data-sly-test="${tile.iconClass}">
+				<div class="c-tile__icon">
+					<i class="c-icon"> 
+						<span class="c-icon__inner"> 
+							<svg><use xlink:href="#${tile.iconClass}"></use></svg>
+						</span>
+					</i>
+				</div>
+			</sly>
+			<h3 class="c-tile__title">${properties.heading||'Heading'}</h3>
+
+			<div class="c-tile__content" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div><!-- c-tile__content -->
+			<sly data-sly-test="${properties.ctaLabel1}">
+				<span class="${properties.highlight?'c-btn  c-btn--secondary':'c-btn c-btn--ghost'}">${properties.ctaLabel1}</span>
+			</sly>
+		</a>
+	</sly>
+
+	<sly data-sly-test="${properties.enableCta=='true' && properties.ctaLabel && properties.ctaLabel1}">
+		<article class="c-tile ${tile.cssClass} c-tile--simple@xsmall  js-match-height">
+			<sly data-sly-test="${tile.iconClass}">
+				<div class="c-tile__icon">
+					<i class="c-icon"> 
+						<span class="c-icon__inner"> 
+							<svg><use xlink:href="#${tile.iconClass}"></use></svg>
+						</span>
+					</i>
+				</div>
+			</sly>
+			<h3 class="c-tile__title">${properties.heading||'Heading'}</h3>
+			<div class="c-tile__content" data-sly-resource="${'description' @resourceType='racv/components/generic/rte/base'}"></div>
+			<ul class="o-inline-group two-cta">
+				<li class="o-inline-group__item">
+					<sly data-sly-test="${tile.ctaLabel && properties.enableCta=='true'|| properties.enableCta=='on'}">
+						<a href="${tile.ctaLink}" target="${tile.mode}" class="c-btn  ${tile.ctaClass}">${tile.ctaLabel}</a>
+					</sly>
+				</li>
+				<li class="o-inline-group__item">
+					<a data-sly-test="${properties.ctaLabel1}" href="${tile.ctaLink1}" target="${tile.mode1}" class="${properties.highlight?'c-btn  c-btn--secondary':'c-btn'}">
+						${properties.ctaLabel1}
+					</a>
+				</li>    
+			</ul>
+		</article>
+	</sly>
+</template>

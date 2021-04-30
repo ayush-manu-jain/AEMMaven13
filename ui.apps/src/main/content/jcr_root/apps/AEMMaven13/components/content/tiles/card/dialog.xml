@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Dialog"
+    title="Card"
+    xtype="dialog">
+    <items jcr:primaryType="cq:WidgetCollection">
+        <tabs jcr:primaryType="cq:TabPanel">
+            <items jcr:primaryType="cq:WidgetCollection">
+                <tile
+                    jcr:primaryType="nt:unstructured"
+                    name="accordionpanel"
+                    title="Configurations"
+                    xtype="panel">
+                    <items jcr:primaryType="cq:WidgetCollection">
+                        <heading
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            defaultValue="Card Title"
+                            fieldLabel="Card title"
+                            name="./heading"
+                            xtype="textfield"/>
+                        <imagePath
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Card Image"
+                            name="./cardImage"
+                            regex="/^(?!{).*$/"
+                            rootPath="/content/dam/racv"
+                            xtype="pathfield"/>
+                        <ctaLink
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            fieldLabel="Card/CTA Link"
+                            hidden="{Boolean}true"
+                            name="./ctaLink"
+                            regex="/^(?!{).*$/"
+                            rootPath="/content"
+                            xtype="pathfield"/>
+                        <ctaLabel
+                            jcr:primaryType="cq:Widget"
+                            allowBlank="false"
+                            defaultValue="CTA"
+                            fieldLabel="CTA Label"
+                            hidden="{Boolean}true"
+                            name="./ctaLabel"
+                            xtype="textfield"/>
+                        <urlParameter
+                            jcr:primaryType="cq:Widget"
+                            fieldDescription="Enter Analytics URL Parameter value if required."
+                            fieldLabel="Analytics URL Parameter"
+                            name="./urlParameter"
+                            xtype="textfield"/>
+                        <modeofopeninglink
+                            jcr:primaryType="cq:Widget"
+                            defaultValue="_self"
+                            fieldLabel="Open in"
+                            name="./openingMode"
+                            options="/etc/lists/racv/link-target/_jcr_content.list.json"
+                            type="select"
+                            width="300"
+                            xtype="selection"/>
+                        <enableCta
+                            jcr:primaryType="cq:Widget"
+                            fieldLabel="Enable CTA"
+                            name="./enableCta"
+                            type="checkbox"
+                            xtype="selection">
+                            <listeners
+                                jcr:primaryType="nt:unstructured"
+                                selectionchanged="function(comp, val, isChecked) {&#xa;    var dialog = comp.findParentByType('dialog');&#xa;    if (isChecked) {&#xa;&#x9;&#x9;dialog.find('name', './openingMode')[0].show();&#xa;&#x9;&#x9;dialog.find('name', './ctaLabel')[0].show();&#xa;&#x9;&#x9;dialog.find('name', './ctaLink')[0].show();&#xa;&#x9;&#x9;dialog.find('name', './urlParameter')[0].show();&#xa;&#x9;&#x9;&#xa;    }&#xa;&#x9;else{&#x9;&#xa;&#x9;&#x9;dialog.find('name', './openingMode')[0].hide();&#xa;&#x9;&#x9;dialog.find('name', './ctaLabel')[0].hide();&#xa;&#x9;&#x9;dialog.find('name', './ctaLink')[0].hide();&#xa;&#x9;&#x9;dialog.find('name', './urlParameter')[0].hide();&#xa;&#x9;&#x9;dialog.find('name', './ctaLabel')[0].allowBlank = true;&#xa;&#x9;&#x9;dialog.find('name', './ctaLink')[0].allowBlank = true;&#xa;&#x9;&#x9;dialog.find('name', './urlParameter')[0].allowBlank = true;&#xa;&#x9;&#x9;&#xa;&#x9;}&#xa;}"/>
+                        </enableCta>
+                    </items>
+                </tile>
+            </items>
+        </tabs>
+    </items>
+    <listeners
+        jcr:primaryType="nt:unstructured"
+        loadcontent="function(comp) {&#xa;    var openingMode = comp.find('name', './openingMode')[0];&#xa;    var ctaLabel = comp.find('name', './ctaLabel')[0];&#xa;   var urlParameter = comp.find('name', './urlParameter')[0];&#xa;   var ctaLink = comp.find('name', './ctaLink')[0];&#xa;&#x9;var enableCTA=comp.find('name', './enableCta')[0];&#xa;&#x9;openingMode.hide();&#xa;&#x9;ctaLabel.hide();&#xa;&#x9;urlParameter.hide();&#xa;&#x9;ctaLink.hide();&#xa;&#x9;ctaLabel.allowBlank = true;&#xa;&#x9;ctaLink.allowBlank = true;&#xa;&#x9;urlParameter.allowBlank = true;&#xa;&#x9;&#xa;&#x9;if (enableCTA.value) {&#xa;          &#xa;&#x9;&#x9;&#x9;openingMode.show();&#xa;&#x9;ctaLabel.show();&#xa;&#x9;ctaLink.show();&#xa;&#x9;urlParameter.show();&#xa;&#x9;ctaLabel.allowBlank = true;&#xa;&#x9;ctaLink.allowBlank = true;&#xa;&#x9;urlParameter.allowBlank = true;&#xa;&#x9;&#x9;&#x9;&#xa;        } else {&#xa;&#x9;&#x9;&#x9;&#xa;           openingMode.hide();&#xa;&#x9;ctaLabel.hide();&#xa;&#x9;ctaLink.hide();&#xa;&#x9;urlParameter.hide();&#xa;&#x9;ctaLabel.allowBlank = false;&#xa;&#x9;ctaLink.allowBlank = false;&#xa;&#x9;urlParameter.allowBlank = false;&#xa;        }&#xa;    &#xa;}"/>
+</jcr:root>
