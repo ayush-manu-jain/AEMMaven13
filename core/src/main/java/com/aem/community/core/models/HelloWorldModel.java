@@ -10,7 +10,7 @@ import com.aem.community.core.MySimpleService;
 public class HelloWorldModel {
 
 	private String xyz;
-	
+	private String sada;
 	private String efg;
 	
 	@OSGiService
